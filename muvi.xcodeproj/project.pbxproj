@@ -7,21 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4B9562F915F7DAE36CF8BB0 /* Pods_muvi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B73C18A3F33216CD15AF24F /* Pods_muvi.framework */; };
 		AE9400281DAF22F400D629CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9400271DAF22F400D629CE /* AppDelegate.swift */; };
-		AE94002A1DAF22F400D629CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9400291DAF22F400D629CE /* ViewController.swift */; };
 		AE94002D1DAF22F400D629CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE94002B1DAF22F400D629CE /* Main.storyboard */; };
 		AE94002F1DAF22F400D629CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE94002E1DAF22F400D629CE /* Assets.xcassets */; };
 		AE9400321DAF22F400D629CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE9400301DAF22F400D629CE /* LaunchScreen.storyboard */; };
+		AE94003A1DAF234100D629CE /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9400391DAF234100D629CE /* MoviesViewController.swift */; };
+		AE94003D1DAF2CD500D629CE /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE94003C1DAF2CD500D629CE /* MovieCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DFAC1769B454923E28DBA34 /* Pods-muvi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvi.release.xcconfig"; path = "Pods/Target Support Files/Pods-muvi/Pods-muvi.release.xcconfig"; sourceTree = "<group>"; };
+		658BB3AC604E1B3D8078E915 /* Pods-muvi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muvi/Pods-muvi.debug.xcconfig"; sourceTree = "<group>"; };
+		7B73C18A3F33216CD15AF24F /* Pods_muvi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muvi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9400241DAF22F400D629CE /* muvi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muvi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9400271DAF22F400D629CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AE9400291DAF22F400D629CE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AE94002C1DAF22F400D629CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE94002E1DAF22F400D629CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE9400311DAF22F400D629CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE9400331DAF22F400D629CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE9400391DAF234100D629CE /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		AE94003C1DAF2CD500D629CE /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4B9562F915F7DAE36CF8BB0 /* Pods_muvi.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		253B6CC72327FF0D1336B1B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7B73C18A3F33216CD15AF24F /* Pods_muvi.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7C27264F543D55DD6623DFD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				658BB3AC604E1B3D8078E915 /* Pods-muvi.debug.xcconfig */,
+				1DFAC1769B454923E28DBA34 /* Pods-muvi.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AE94001B1DAF22F400D629CE = {
 			isa = PBXGroup;
 			children = (
 				AE9400261DAF22F400D629CE /* muvi */,
 				AE9400251DAF22F400D629CE /* Products */,
+				A7C27264F543D55DD6623DFD /* Pods */,
+				253B6CC72327FF0D1336B1B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +80,31 @@
 		AE9400261DAF22F400D629CE /* muvi */ = {
 			isa = PBXGroup;
 			children = (
+				AE94003E1DAF2CF100D629CE /* ViewControllers */,
+				AE94003B1DAF2CB700D629CE /* Views */,
 				AE9400271DAF22F400D629CE /* AppDelegate.swift */,
-				AE9400291DAF22F400D629CE /* ViewController.swift */,
 				AE94002B1DAF22F400D629CE /* Main.storyboard */,
 				AE94002E1DAF22F400D629CE /* Assets.xcassets */,
 				AE9400301DAF22F400D629CE /* LaunchScreen.storyboard */,
 				AE9400331DAF22F400D629CE /* Info.plist */,
 			);
 			path = muvi;
+			sourceTree = "<group>";
+		};
+		AE94003B1DAF2CB700D629CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AE94003C1DAF2CD500D629CE /* MovieCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		AE94003E1DAF2CF100D629CE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE9400391DAF234100D629CE /* MoviesViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +114,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE9400361DAF22F400D629CE /* Build configuration list for PBXNativeTarget "muvi" */;
 			buildPhases = (
+				4351421176243D3E16234F7C /* [CP] Check Pods Manifest.lock */,
 				AE9400201DAF22F400D629CE /* Sources */,
 				AE9400211DAF22F400D629CE /* Frameworks */,
 				AE9400221DAF22F400D629CE /* Resources */,
+				2E5F8584DDD6FECB013D3952 /* [CP] Embed Pods Frameworks */,
+				90E70776E0675F78DFD3392D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,13 +176,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2E5F8584DDD6FECB013D3952 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muvi/Pods-muvi-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4351421176243D3E16234F7C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		90E70776E0675F78DFD3392D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-muvi/Pods-muvi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AE9400201DAF22F400D629CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE94002A1DAF22F400D629CE /* ViewController.swift in Sources */,
 				AE9400281DAF22F400D629CE /* AppDelegate.swift in Sources */,
+				AE94003A1DAF234100D629CE /* MoviesViewController.swift in Sources */,
+				AE94003D1DAF2CD500D629CE /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +342,7 @@
 		};
 		AE9400371DAF22F400D629CE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 658BB3AC604E1B3D8078E915 /* Pods-muvi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = muvi/Info.plist;
@@ -258,6 +354,7 @@
 		};
 		AE9400381DAF22F400D629CE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1DFAC1769B454923E28DBA34 /* Pods-muvi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = muvi/Info.plist;
@@ -286,6 +383,7 @@
 				AE9400381DAF22F400D629CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
