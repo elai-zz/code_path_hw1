@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A4B9562F915F7DAE36CF8BB0 /* Pods_muvi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B73C18A3F33216CD15AF24F /* Pods_muvi.framework */; };
+		AE87D7B71DB1E946002A26E0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE87D7B61DB1E946002A26E0 /* DetailViewController.swift */; };
 		AE9400281DAF22F400D629CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9400271DAF22F400D629CE /* AppDelegate.swift */; };
 		AE94002D1DAF22F400D629CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE94002B1DAF22F400D629CE /* Main.storyboard */; };
 		AE94002F1DAF22F400D629CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE94002E1DAF22F400D629CE /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 		1DFAC1769B454923E28DBA34 /* Pods-muvi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvi.release.xcconfig"; path = "Pods/Target Support Files/Pods-muvi/Pods-muvi.release.xcconfig"; sourceTree = "<group>"; };
 		658BB3AC604E1B3D8078E915 /* Pods-muvi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-muvi.debug.xcconfig"; path = "Pods/Target Support Files/Pods-muvi/Pods-muvi.debug.xcconfig"; sourceTree = "<group>"; };
 		7B73C18A3F33216CD15AF24F /* Pods_muvi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_muvi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE87D7B61DB1E946002A26E0 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		AE9400241DAF22F400D629CE /* muvi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = muvi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9400271DAF22F400D629CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE94002C1DAF22F400D629CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9400391DAF234100D629CE /* MoviesViewController.swift */,
+				AE87D7B61DB1E946002A26E0 /* DetailViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				AE9400281DAF22F400D629CE /* AppDelegate.swift in Sources */,
 				AE94003A1DAF234100D629CE /* MoviesViewController.swift in Sources */,
 				AE94003D1DAF2CD500D629CE /* MovieCell.swift in Sources */,
+				AE87D7B71DB1E946002A26E0 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,14 @@
 //
 
 import UIKit
-import AFNetworking // command + B
+import AFNetworking // command + B to build
+import MBProgressHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var movies: [NSDictionary]?
+    var endpoint: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +22,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.delegate = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
@@ -28,19 +30,29 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             delegateQueue:NSOperationQueue.mainQueue()
         )
         
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (dataOrNil, responseOrNil, errorOrNil) in
-                            if let data = dataOrNil {
-                                if let responseDictionary = try!
-                                    NSJSONSerialization.JSONObjectWithData(data, options:[]) as?
-                                    NSDictionary {
-                                    print("response: \(responseDictionary)")
-                                    self.movies = responseDictionary["results"] as? [NSDictionary]
-                                    self.tableView.reloadData()
-                                }
-                            }
+            
+            // Hide HUD once the network request comes back (must be done on main UI thread)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            
+            if let data = dataOrNil {
+                if let responseDictionary = try!
+                    NSJSONSerialization.JSONObjectWithData(data, options:[]) as?
+                    NSDictionary {
+                        self.movies = responseDictionary["results"] as? [NSDictionary]
+                        self.tableView.reloadData()
+                }
+            }
             
         });
         task.resume()
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshControlAction(_:)),
+                                 forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
 
         // Do any additional setup after loading the view.
     }
@@ -49,6 +61,40 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
+        let request = NSURLRequest(URL: url!)
+        
+        // Configure session so that completion handler is executed on main UI thread
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate:nil,
+            delegateQueue:NSOperationQueue.mainQueue()
+        )
+        
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request, completionHandler: { (dataOrNil, responseOrNil, errorOrNil) in
+            
+            // Hide HUD once the network request comes back (must be done on main UI thread)
+            MBProgressHUD.hideHUDForView(self.view, animated: true)
+            
+            if let data = dataOrNil {
+                if let responseDictionary = try!
+                    NSJSONSerialization.JSONObjectWithData(data, options:[]) as?
+                    NSDictionary {
+                    self.movies = responseDictionary["results"] as? [NSDictionary]
+                    self.tableView.reloadData()
+                    refreshControl.endRefreshing()
+                }
+            }
+            
+        });
+        task.resume()
+    }
+    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let movies = movies {
@@ -71,26 +117,22 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         let imageBaseUrl = "https://image.tmdb.org/t/p/w342"
         
-        if let posterPath = movie["poster_path"] as? NSNull {
-            return cell
-        } else {
-            let posterPath = movie["poster_path"]
-            let imageUrl = NSURL(string: imageBaseUrl + (posterPath as! String))
+        if let posterPath = movie["poster_path"] as? String {
+            let imageUrl = NSURL(string: imageBaseUrl + posterPath)
             cell.posterView.setImageWithURL(imageUrl!)
         }
 
         return cell
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        let destinationDetailViewController = segue.destinationViewController as! DetailViewController
+        destinationDetailViewController.movie = movie
+        
+        
     }
-    */
 
 }
