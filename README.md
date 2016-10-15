@@ -35,7 +35,9 @@ Here's a walkthrough of implemented user stories:
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
 Icons provided by [The Noun Project](https://thenounproject.com/) and [Iconfinder](https://www.iconfinder.com/).
+
 Appicons provided by [Make App Icon](https://makeappicon.com/).
 
 ## Notes
