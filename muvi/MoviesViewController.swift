@@ -12,12 +12,14 @@ import MBProgressHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     var movies: [NSDictionary]?
     var endpoint: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorLabel.hidden = true
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -37,7 +39,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             // Hide HUD once the network request comes back (must be done on main UI thread)
             MBProgressHUD.hideHUDForView(self.view, animated: true)
             
+            if let error = errorOrNil {
+                self.errorLabel.text = error.domain
+                self.errorLabel.hidden = false
+            }
+            
             if let data = dataOrNil {
+                self.errorLabel.hidden = true
                 if let responseDictionary = try!
                     NSJSONSerialization.JSONObjectWithData(data, options:[]) as?
                     NSDictionary {
@@ -81,7 +89,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             // Hide HUD once the network request comes back (must be done on main UI thread)
             MBProgressHUD.hideHUDForView(self.view, animated: true)
             
+            
+            if let error = errorOrNil {
+                self.errorLabel.text = error.domain
+                self.errorLabel.hidden = false
+            }
+            
             if let data = dataOrNil {
+                self.errorLabel.hidden = true
                 if let responseDictionary = try!
                     NSJSONSerialization.JSONObjectWithData(data, options:[]) as?
                     NSDictionary {
