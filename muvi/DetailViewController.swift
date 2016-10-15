@@ -17,27 +17,27 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var textView: UIView!
     
+    let imageBaseUrl = "https://image.tmdb.org/t/p/w342"
     var movie: NSDictionary!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
         
+        // set up scroll view
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width,
                                         height: textView.frame.origin.y + textView.frame.size.height)
-        let title = movie["title"] as! String! // option and click
-        let overview = movie["overview"] as! String
+        
+        // set up title text
+        let title = movie["title"] as! String!
         titleLabel.text = title
+        
+        // set up overview text
+        let overview = movie["overview"] as! String
         overviewLabel.text = overview
         overviewLabel.sizeToFit()
+        showImage()
         
-        let imageBaseUrl = "https://image.tmdb.org/t/p/w342"
-        if let posterPath = movie["poster_path"] as? String {
-            let imageUrl = NSURL(string: imageBaseUrl + posterPath)
-            posterView.setImageWithURL(imageUrl!)
-        }
-
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,15 +45,11 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func showImage() {
+        if let posterPath = movie["poster_path"] as? String {
+            let imageUrl = NSURL(string: imageBaseUrl + posterPath)
+            posterView.setImageWithURL(imageUrl!)
+        }
     }
-    */
 
 }
