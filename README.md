@@ -28,9 +28,8 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<video width="320" height="240" controls>
-    <source src="http://i.imgur.com/z3NQ1Ye.mp4" type="video/mp4">
-</video>
+<img src='http://i.giphy.com/3oI9JHO15haaB6YmKA.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
