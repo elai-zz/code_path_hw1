@@ -39,8 +39,7 @@ Appicons provided by [Make App Icon](https://makeappicon.com/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
-
+One challenge I had was that I encountered a nil image url from the API and spent some time figuring out why it was crashing. It wasn't until a later video that explained how to handle image retrieval safely. 
 ## License
 
     Copyright [2016] [Minnie Lai]
